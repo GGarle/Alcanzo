@@ -1,4 +1,4 @@
-# Alcanzo 
+# Alcanzo
 
 **¿Te alcanza? Preguntá antes de gastar. Te respondemos al toque.**
 
@@ -26,5 +26,4 @@ En una región donde millones de personas toman decisiones financieras sin infor
 ---
 
 ##  Visión
-
 Convertirse en el referente financiero simple y confiable en LatAm: **“antes de gastar, pregunto en Alcanzo”.**
