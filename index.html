@@ -24,22 +24,46 @@
             </nav>
         </div>  
     </header>   
-    <main>
-        <section  class="main">
-            <p >Tus gastos más simples</p>
+    <section class="main">
+        <div class="container main-grid">
+          <!-- Columna izquierda: TU copy actual (sin clases nuevas) -->
+          <div class="col-left">
+            <p>Tus gastos más simples</p>
             <h1 class="titulo_principal">
-                ¿Te alcanza? <br>
-                Preguntá antes de gastar
-                <span class="h1-acento">Te respondemos al toque</span>
+              ¿Te alcanza? <br>
+              Preguntá antes de gastar
+              <span class="h1-acento">Te respondemos al toque</span>
             </h1>
-            <p >Decidí con datos: cuánto te queda este mes y cuánto podés pagar por mes sin apretarte. Probalo en 30 segundos. Si querés, creás tu cuenta y guardás tu avance.</p>
-            <a href="simulador.html">Probar simulador</a>
-            <a href="signup.html">Crear cuenta gratis</a>
-            <p >Tip: Podés empezar sin registrarte y guardar después.</p>
-            <p ><strong>Demo</strong></p>
-            <h3 >Vista previa del simulador</h3>
-            <p > Sobrante, cuota segura y un semáforo en segundos</p>
-        </section>
+            <p>Decidí con datos: cuánto te queda este mes y cuánto podés pagar por mes sin apretarte. Probalo en 30 segundos. Si querés, creás tu cuenta y guardás tu avance.</p>
+            <div class="cta">
+              <a href="simulador.html" class="btn">Probar simulador</a>
+              <a href="signup.html" class="btn alt">Crear cuenta gratis</a>
+            </div>
+            <p>Tip: Podés empezar sin registrarte y guardar después.</p>
+          </div>
+      
+          <!-- Columna derecha: tarjeta ilustrativa clickeable -->
+          <aside class="col-right">
+            <a class="demo-card" href="simulador.html" aria-label="Ir al simulador">
+              <strong class="demo-badge">simulador</strong>
+              <h3>Simulador simple</h3>
+              <p class="demo-sub">Cargás ingresos y gastos, estimamos tu cuota “cómoda” y te mostramos un semáforo.</p>
+      
+              <div class="demo-box" aria-hidden="true">
+                <div class="demo-line lg"></div>
+                <div class="demo-line md"></div>
+                <div class="demo-panel"></div>
+                <div class="demo-traffic">
+                  <span class="ok"></span>
+                  <span class="warn"></span>
+                  <span class="bad"></span>
+                </div>
+                <div class="demo-panel light"></div>
+              </div>
+            </a>
+          </aside>
+        </div>
+      </section>
 
        <!-- SIMULADOR / FEATURES -->
         <section id="simulador" class="simulador container">
