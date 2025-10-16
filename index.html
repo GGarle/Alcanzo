@@ -10,49 +10,150 @@
 </head>
 <body>
     <header>
-        <img src="logo/20250925_logo.png" alt="Logo entidad" width="120px" height="120px">
-        <nav>
-            <a href="#simulador">Simulador</a>
-            <a href="#funciona">Cómo funciona</a>
-            <a href="#precios">Precios</a>
-            <a href="#faq">FAQ</a>
-            <a href="login.html">Entrar</a>
-            <a href="signup.html">Crear cuenta</a>
-        </nav>
-    </header>
+        <div class="container_logo">
+            <div>
+                <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Logo entidad">
+            </div>
+            <nav class="links" aria-label="principal">
+                <a href="#simulador">Simulador</a>
+                <a href="#funciona">Cómo funciona</a>
+                <a href="#precios">Precios</a>
+                <a href="#faq">Preguntas frecuentes</a>
+                <a href="login.html" class="btn" >Entrar</a>
+                <a href="signup.html" class="btn" >Crear cuenta</a>
+            </nav>
+        </div>  
+    </header>   
     <main>
-        <section id="principal" class="titulo">
-            <p id="pill">Finanzas sin traducción</p>
-            <h2 id="titulo">¿Te alcanza? <br>Preguntá antes de gastar. <br> Te respondemos al toque</h2>
-            <p id="subtitulo">Calculá tu sobrante mensual, conocé tu cuota segura y tomá decisiones tranquilas. Si te pasás a Pro, seguí tu cashflow, metas y alertas</p>
+        <section  class="main">
+            <p >Tus gastos más simples</p>
+            <h1 class="titulo_principal">
+                ¿Te alcanza? <br>
+                Preguntá antes de gastar
+                <span class="h1-acento">Te respondemos al toque</span>
+            </h1>
+            <p >Decidí con datos: cuánto te queda este mes y cuánto podés pagar por mes sin apretarte. Probalo en 30 segundos. Si querés, creás tu cuenta y guardás tu avance.</p>
             <a href="simulador.html">Probar simulador</a>
-            <a href="singup.html">Crear cuenta gratis</a>
-            <p id="subtitulo">Tip: Podés empezar sin registrarte y guardar después.</p>
-            <p id="demo"><strong>Demo</strong></p>
-            <h3 id="titulo">Vista previa del simulador</h3>
-            <p id="subtitulo"> Sobrante, cuota segura y un semáforo en segundos</p>
+            <a href="signup.html">Crear cuenta gratis</a>
+            <p >Tip: Podés empezar sin registrarte y guardar después.</p>
+            <p ><strong>Demo</strong></p>
+            <h3 >Vista previa del simulador</h3>
+            <p > Sobrante, cuota segura y un semáforo en segundos</p>
         </section>
 
-        <section id="simulador">
-            <h2 id="titulo">Lo que hace Alcanzo</h2>
-            <h3 id="titulo">Calculá tu sobrante</h3>
-            <p>Ingresos − (gastos + cuotas) y listo. Sin vueltas.</p>
-            <h3 id="titulo">Cuota segura</h3>
-            <p>Te decimos hasta cuánto podés pagar sin quedarte corto.</p>
-            <h3 id="titulo">Semáforo en vivo</h3>
-            <p>Verde / amarillo / rojo según tu situación. Decidís con calma.</p>
+       <!-- SIMULADOR / FEATURES -->
+        <section id="simulador" class="simulador container">
+            <h2 class="titulo_principal_2">Lo que hace Alcanzo</h2>
+            <div class="features-grid">
+            <article class="card">
+                <h3 class="titulo_principal_3">Calculá tu sobrante</h3>
+                <p>Ingresos − (gastos + cuotas) y listo. Sin vueltas.</p>
+            </article>
+            <article class="card">
+                <h3 class="titulo_principal_3">Cuota segura</h3>
+                <p>Te decimos hasta cuánto podés pagar sin quedarte corto.</p>
+            </article>
+            <article class="card">
+                <h3 class="titulo_principal_3">Semáforo en vivo</h3>
+                <p>Verde / amarillo / rojo según tu situación. Decidís con calma.</p>
+            </article>
+            <article class="card">
+                <h3 class="titulo_principal_3">Metas</h3>
+                <p>Objetivos de ahorro medibles.</p>
+            </article>
+            <article class="card">
+                <h3 class="titulo_principal_3">Cashflow (Pro)</h3>
+                <p>Evolución de ingresos y gastos por mes, metas y proyección.</p>
+            </article>
+            <article class="card">
+                <h3 class="titulo_principal_3">Alertas (Pro)</h3>
+                <p>Recordatorios simples: vencimientos, subas de gastos, objetivos.</p>
+            </article>
+            </div>
         </section>
-
-        <section id="funciona">
-            <h2 id="titulo">Cómo funciona</h2>
-            <h3 id="titulo">Colocá tus ingresos</h3>
-            <p>Ingresos y gastos básicos.En 30 segundos.</p>
-            <h3 id="titulo">Simulá tu compra</h3>
-            <p>Monto y cuotas. Vemos si te alcanza sin riesgo.</p>
-            <h3 id="titulo">Seguimiento (Pro)</h3>
-            <p>Registrate, guardá perfiles y segui tu cashflow</p>
-
+        
+        <!-- CÓMO FUNCIONA -->
+        <section id="funciona" class="funciona container">
+            <h2 class="titulo_principal_2">Cómo funciona</h2>
+            <div class="steps-grid">
+            <article class="card step" data-step="1">
+                <h3 class="titulo_principal_3">Contanos tus números</h3>
+                <p>Ingreso y gastos básicos. 30 segundos.</p>
+            </article>
+            <article class="card step" data-step="2">
+                <h3 class="titulo_principal_3">Simulá tu compra</h3>
+                <p>Monto y cuotas. Vemos si te alcanza sin riesgo.</p>
+            </article>
+            <article class="card step" data-step="3">
+                <h3 class="titulo_principal_3">Seguimiento (Pro)</h3>
+                <p>Registrate, guardá perfiles y seguí tu cashflow</p>
+            </article>
+            </div>
         </section>
+        
+        <!-- PRECIOS -->
+        <section id="precios" class="precios container">
+            <h2 class="titulo_principal_2">Precios simples</h2>
+            <div class="pricing-grid">
+            <article class="card price">
+                <h3 class="titulo_principal_3">Gratis</h3>
+                <p>Para decidir antes de comprar</p>
+                <p class="num">$ 0</p>
+                <ul>
+                <li>Simulador completo</li>
+                <li>1 perfil</li>
+                <li>Guardado local</li>
+                </ul>
+                <a class="btn" href="simulador.html">Usar ahora</a>
+            </article>
+            <article class="card price">
+                <h3 class="titulo_principal_3">Pro</h3>
+                <p>Para seguir tu mes a mes</p>
+                <p class="num">$ 100.000 /mes</p>
+                <ul>
+                <li>Perfiles ilimitados</li>
+                <li>Cashflow, metas y alertas</li>
+                </ul>
+                <a class="btn" href="signup.html">Probar gratis</a>
+            </article>
+            </div>
+        </section>
+  
+        <section id="faq">
+            <h2 class="titulo_principal_2">Preguntas frecuentes</h2>
+          
+            <h3 class="titulo_principal_3">¿Necesito registrarme?</h3>
+            <p>No para el simulador. Podés crear una cuenta cuando quieras para guardar tu avance.</p>
+          
+            <h3 class="titulo_principal_3">¿Qué significa “lo que te queda por mes”?</h3>
+            <p>Es la plata que te queda después de tus gastos y cuotas actuales. La sacamos así: <strong>ingresos − (gastos fijos + cuotas vigentes)</strong>. No hace falta conectar el banco: vos cargás los números.</p>
+          
+            <h3 class="titulo_principal_3">¿Qué es la “cuota segura” / “cuota cómoda”?</h3>
+            <p>Es una referencia de cuota mensual que no te complica según tus números. La calculamos con un margen de seguridad para que puedas pagarla sin apuros.</p>
+          
+            <h3 class="titulo_principal_3">¿Qué necesito para usarlo?</h3>
+            <p>Solo tus números básicos: ingreso mensual en mano y tus gastos/cuotas del mes. Podés redondear.</p>
+          
+            <h3 class="titulo_principal_3">¿Cómo funciona el semáforo?</h3>
+            <ul>
+              <li><strong>Verde</strong> = cómodo</li>
+              <li><strong>Amarillo</strong> = justo</li>
+              <li><strong>Rojo</strong> = no recomendado</li>
+            </ul>
+          
+            <h3 class="titulo_principal_3">¿Puedo simular una compra en cuotas con tasa?</h3>
+            <p>Sí. Ingresás el monto, la cantidad de cuotas y, si sabés, la TNA. Estimamos la cuota y te mostramos el semáforo.</p>
+          </section>
     </main>
+
+    <footer class="footer">
+        <div class="container foot">
+          <div class="foot-brand">
+            <img src="logo/20250925_logo.png" alt="Logo Alcanzo" class="logo-small" width="120px" height="120px">
+            
+          </div>
+          <small>© 2025 Alcanzo — “¿Te alcanza? Preguntá antes de gastar. Te respondemos al toque.”</small>
+        </div>
+      </footer>
 </body>
 </html>
