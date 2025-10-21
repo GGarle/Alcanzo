@@ -14,7 +14,8 @@
     --shadow:0 8px 8px rgba(4, 65, 22, 0.2); /* SOMBRA EN CARD*/
   }
   
-  *{ box-sizing:border-box; }
+  *{ box-sizing:border-box;
+    }
 
   html,body{ height:100% }
 
@@ -30,9 +31,10 @@
     text-decoration:none 
   }
 
-  .container{ max-width:1300px; 
+  .container{ max-width:100%; 
     margin:0px 0px 0px 20px; 
-    padding:10px 20px 20px 20px
+    padding:10px 20px 20px 20px;
+    
   }
   
   /* ================== HEADER ================== */
@@ -51,10 +53,10 @@
     align-items:center; 
     justify-content:space-between; 
     gap:20px;
-    max-width:1100px;
-    margin:0 auto; 
+    margin:0 10px ; 
     padding:16px 20px ;
-  }
+    max-width: 100%;
+   }
 
 
   .logo_img{
@@ -73,8 +75,8 @@
     gap:18px; 
     flex-wrap:wrap;
     font-weight:600; 
-    font-size:clamp(0.95rem, 1.1vw, 1.2rem);
-    text-align: left;
+    font-size:clamp(1.2rem, 1.8vw, 1.4rem);
+    text-align: right;
   }
   .links a{ white-space: nowrap; } 
 
@@ -83,7 +85,8 @@
     .links{
       flex:1 1 100%;
       justify-content:center;
-      gap:14px; padding-top:8px;
+      gap:14px; 
+      padding-top:8px;
     }
   }
 
@@ -109,7 +112,8 @@
     box-shadow: var(--shadow);
   }
   .btn.alt{
-    background: #e6f9ee; color:#166534;
+    background: #e6f9ee; 
+    color:#166534;
   }
   
   /* ================== HERO (.main) ================== */
@@ -125,7 +129,7 @@
 
   .main .col-left > p:first-of-type{
     display:inline-block;
-    font-size:20px;
+    font-size:30px;
     font-weight:800;
     color:#fff;
     background:#0a3173;
@@ -139,8 +143,8 @@
   .titulo_principal{
     margin:12px 0 12px 20px; 
     font-weight:900; 
-    line-height:1.3;
-    font-size: clamp(1.9rem, 4vw, 3.1rem);
+    line-height:1.2;
+    font-size: clamp(2.9rem, 6vw, 4.1rem);
     color:#0f172a;
     display: flexbox;
     padding: 10px 10px 10px 10px;
@@ -154,7 +158,7 @@
 
   .main p{ color:var(--muted); 
     max-width:168ch;
-    font-size: clamp(0.02rem, 3vw, 1.1rem);
+    font-size: clamp(1.5rem, 6vw, 1.5rem);
     margin: 10px 0px 10px 30px;
 }
 
@@ -169,6 +173,7 @@
   background:#fff;
   color:#0f172a;
   margin: 10px 10px 10px 20px;
+  font-size: clamp(1.3rem, 6vw, 1.3rem);
 }
 
 .main a[href$=".html"]:first-of-type{
@@ -271,15 +276,16 @@
   .titulo_principal_2{
     margin:32px 0 16px; 
     font-weight:900; 
-    font-size:clamp(1.3rem,2.2vw,1.8rem);
+    font-size:clamp(2.3rem,3.2vw,2.8rem);
   }
 
   .titulo_principal_3{ margin:0 0 4px; 
     font-weight:800; 
-    font-size:1.05rem }
+    font-size:1.5rem }
   
   .card p{ color:var(--muted);
-     margin:.35rem 0 0 
+     margin:.35rem 0 0 ;
+     font-size:1.5rem 
     }
   
   /* ================== CÓMO FUNCIONA ================== */
@@ -295,32 +301,37 @@
     position:absolute; 
     left:-10px; 
     top:-8px;
-    font-weight:700; 
+    font-weight:800; 
     color:#0369a1; 
     background:#e0f2fe; 
-    border:1px solid #bae6fd;
-    padding:2px 8px; border-radius:8px;
+    border:1px solid #143a4e;
+    padding:2px 8px; 
+    border-radius:8px;
+    font-size:1.1rem 
   }
   
   /* ================== PRECIOS ================== */
   .pricing-grid{ display:grid; 
-    gap:16px 
+    gap:16px ;
+    font-size:1.2rem
   }
   @media (min-width:960px){ 
     .pricing-grid{ grid-template-columns:1fr 1fr } 
   }
-  .price .num{ font-size:2rem; 
+  .price .num{ font-size:2.8rem; 
     font-weight:900 
   }
   .price ul{ margin:.4rem 0; 
     padding-left:18px; 
-    color:var(--muted) 
+    color:var(--muted) ;
+    font-size:1.3rem 
   }
 
   /* ====== FAQ (acordeón sin JS) ====== */
 .faq { display: grid; 
   gap: 16px; 
-  margin-top: 8px; 
+  margin-top: 8px;
+  font-size:clamp(1.5rem,4vw,1.5rem);
   font-family: Rajdhani,Inter,Roboto, system-ui, "Segoe UI",  Arial;}
 
 .faq-item {
@@ -363,6 +374,7 @@
   color: var(--muted);
   padding: 0 18px 16px 18px;
   margin: 0;
+  font-size:clamp(1.3rem,3vw,1.3rem);
 }
 
 .faq-item ul { padding-left: 36px; }
@@ -387,16 +399,17 @@
   /* ================== FOOTER ================== */
   .footer{ margin-top:36px; 
     border-top:1px solid var(--stroke); 
-    background:#f9fafb }
+    background:#f9fafb ;
+    font-size:clamp(1.2rem, 2vw, 1.3rem);}
     
   .footer .foot{
-    max-width:1100px; 
+    max-width:100%; 
     margin:0 auto; 
-    padding:18px 20px;
+    padding:18px 10px;
     display:flex; 
     align-items:center; 
     justify-content:space-between; 
     gap:12px; flex-wrap:wrap;
   }
-  .logo-small{ height:32px; width:auto }
+  .logo-small{ height:100px; width:100px }
   
