@@ -1,0 +1,40 @@
+/* Encabezado local del simulador */
+.sim-hero{padding:28px 0;background:var(--bg2);border-bottom:1px solid var(--stroke)}
+.sim-hero h1{font-weight:900;margin:6px 0 0}
+.sim-hero .accent{color:var(--ok)}
+
+/* Grid principal */
+.sim-grid{display:grid;gap:18px;margin:22px 0}
+@media(min-width:960px){ .sim-grid{grid-template-columns:1.1fr 1.1fr .9fr} }
+
+/* Bloques (cards) */
+.sim-card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.sim-card h2{margin:0 0 8px;font-size:1.15rem}
+
+/* Inputs */
+.form-row{display:grid;gap:10px;margin-bottom:10px}
+@media(min-width:720px){ .form-row.cols-2{grid-template-columns:1fr 1fr}
+                         .form-row.cols-3{grid-template-columns:repeat(3,1fr)} }
+label{display:block;font-size:.95rem;color:var(--muted);margin:2px 0}
+input[type="number"],input[type="text"],select{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid #cbd5e1;
+  background:#fff;color:var(--ink);font-weight:600
+}
+input:focus,select:focus{outline:3px solid #dbeafe;border-color:#93c5fd}
+
+/* Resultados */
+.kpi{display:flex;align-items:baseline;gap:8px;margin:12px 0}
+.kpi .n{font-weight:900;font-size:1.6rem}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #cbd5e1;font:600 .8rem/1 ui-monospace,Menlo,monospace;color:#475569}
+.traffic{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
+.traffic span{display:block;height:12px;border-radius:999px}
+.traffic .g{background:#22c55e}.traffic .y{background:#fbbf24}.traffic .r{background:#ef4444}
+
+/* CTA */
+.sim-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ok);color:#fff;border:0;
+  padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:var(--shadow)}
+
+/* Responsive fino */
+@media(max-width:960px){
+  .sim-grid{grid-template-columns:1fr}
+}

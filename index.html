@@ -208,13 +208,72 @@
   </main>
 
   <!-- ============== FOOTER ============== -->
-  <footer class="footer">
-    <div class="container foot">
-      <div class="foot-brand">
-        <img src="logo/20250925_logo.png" alt="Logo Alcanzo" class="logo-small" width="120" height="120"/>
-      </div>
-      <small>© 2025 Alcanzo — “¿Te alcanza? Preguntá antes de gastar. Te respondemos al toque.”</small>
+<footer class="footer">
+  <div class="container foot">
+    <div class="foot-grid">
+      
+      <!-- Columna 1: Marca -->
+      <section class="foot-col card">
+        <div class="foot-brand">
+          <img src="logo/20250925_logo.png" alt="Logo Alcanzo" class="logo-small" width="120" height="120">
+        </div>
+        <p class="foot-text">¿Te alcanza antes de gastar? Decidí con datos, sin vueltas.</p>
+        <small class="foot-copy">© 2025 Alcanzo</small>
+      </section>
+
+      <!-- Columna 2: Contacto + redes -->
+      <section class="foot-col card">
+        <h3 class="foot-title">Contacto</h3>
+        <ul class="foot-links">
+          <li><a href="mailto:hola@alcanzo.app">hola@alcanzo.app</a></li>
+          <li><a href="tel:+5491100000000">+54 9 11 0000-0000</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <!-- Si más adelante usás Formspree o /contacto.html, linkealo acá -->
+        </ul>
+
+        <div class="social" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+            <!-- Instagram (SVG) -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm10 2H7a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3zm-5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2zM17.5 6a1 1 0 11-1 1 1 1 0 011-1z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+            <!-- LinkedIn (SVG) -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 107.5 6 2.5 2.5 0 004.98 3.5zM3.5 8h3v12h-3zm6 0h2.9v1.6h.04a3.18 3.18 0 012.86-1.57c3.06 0 3.62 2.01 3.62 4.63V20h-3v-5.1c0-1.22 0-2.8-1.7-2.8-1.7 0-2 1.33-2 2.7V20h-3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="X" title="X" target="_blank" rel="noopener">
+            <!-- X/Twitter (SVG) -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M18.9 2H22l-7.1 8.1L23.5 22H16l-5-6.5L5.2 22H2l7.6-8.7L.5 2H8l4.5 6L18.9 2zm-2.5 18h2.1L7.6 4H5.4l11 16z"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Columna 3: Ubicación (iframe de Google Maps) -->
+      <section class="foot-col card">
+        <h3 class="foot-title">Ubicación</h3>
+        <p class="foot-text">Av. Siempre Viva 742, CABA</p>
+        <div class="map-box">
+          <iframe
+            title="Mapa — Alcanzo"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Av.+Siempre+Viva+742,+CABA&output=embed">
+          </iframe>
+        </div>
+      </section>
+
     </div>
-  </footer>
+  </div>
+
+  <!-- Banda final opcional -->
+  <div class="footer-endcap"></div>
+</footer>
+
 </body>
 </html>

@@ -31,10 +31,10 @@
     text-decoration:none 
   }
 
-  .container{ max-width:100%; 
-    margin:0px 0px 0px 20px; 
-    padding:10px 20px 20px 20px;
-    
+  .container{
+    max-width:1100px;
+    margin:0 auto;          /* centrado real, sin desplazar a la derecha */
+    padding:0 20px;         /* respiración lateral */
   }
   
   /* ================== HEADER ================== */
@@ -396,20 +396,350 @@
   color: red;
 }
   
-  /* ================== FOOTER ================== */
-  .footer{ margin-top:36px; 
-    border-top:1px solid var(--stroke); 
-    background:#f9fafb ;
-    font-size:clamp(1.2rem, 2vw, 1.3rem);}
-    
-  .footer .foot{
-    max-width:100%; 
-    margin:0 auto; 
-    padding:18px 10px;
-    display:flex; 
-    align-items:center; 
-    justify-content:space-between; 
-    gap:12px; flex-wrap:wrap;
+  /* ===== Footer en 3 “cards“ ===== */
+.footer{
+  margin-top:36px;
+  border-top:1px solid var(--stroke);
+  background:#f9fafb;
+}
+
+.footer .foot{
+  max-width:1100px;
+  margin:0 auto;
+  padding:22px 20px;
+}
+
+.foot-grid{
+  display:grid;
+  gap:16px;
+}
+
+@media (min-width:960px){
+  .foot-grid{
+    grid-template-columns:1.2fr 1fr 1fr;
   }
-  .logo-small{ height:100px; width:100px }
-  
+}
+
+.foot-col{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:12px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+
+.foot-title{
+  margin:0 0 8px;
+  font-weight:800;
+  font-size:1.3rem; /* subí tamaño, pero controlado para mobile */
+  color:#0f172a;
+}
+
+.foot-text{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:1rem;
+}
+
+.foot-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-small{
+  height:156px;
+  width:auto;
+}
+
+/* leyenda/© un poco más grande como pediste */
+.foot-copy{
+  display:block;
+  margin-top:10px;
+  color:var(--muted);
+  font-size:1.05rem;
+}
+
+/* Links de contacto */
+.foot-links{
+  list-style:none;
+  padding:0;
+  margin:0 0 10px 0;
+  font-size:1rem;
+}
+
+.foot-links li + li{
+  margin-top:6px;
+}
+
+.foot-links a{
+  color:var(--ink);
+  font-weight:600;
+  text-decoration:none;
+  border-radius:8px;
+  padding:2px 0;
+  outline: none;
+}
+
+.foot-links a:hover{
+  text-decoration:underline;
+}
+
+.foot-links a:focus-visible{
+  outline:2px solid #94a3b8; /* foco accesible */
+  outline-offset:2px;
+  border-radius:6px;
+}
+
+/* Redes sociales (SVG inline) */
+.social{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+
+.social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--stroke);
+  color:#0f172a;           /* los SVG usan currentColor */
+  background:#fff;
+  transition:transform .1s ease, box-shadow .2s ease, background-color .2s ease;
+  outline: none;
+}
+
+.social a:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  background:#f8fafc;
+}
+
+.social a:focus-visible{
+  outline:2px solid #94a3b8;
+  outline-offset:2px;
+}
+
+/* Pequeña sugerencia de color por marca en hover (optativo) */
+.social a[aria-label="Instagram"]:hover{ color:#d946ef; }
+.social a[aria-label="LinkedIn"]:hover{ color:#2563eb; }
+.social a[aria-label="X"]:hover{ color:#0f172a; }
+
+/* Mapa responsive */
+.map-box{
+  border:1px solid var(--stroke);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  position:relative;
+  padding-bottom:56.25%; /* 16:9 */
+  height:0;
+}
+
+.map-box iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* Stack en mobile */
+@media (max-width:960px){
+  .footer .foot{ padding:18px 16px; }
+  .foot-grid{ grid-template-columns:1fr; }
+}
+
+/* Banda final que “cierra” la página (optativa) */
+.footer-endcap{
+  margin-top:16px;
+  height:10px;
+  background: linear-gradient(90deg, rgba(78, 37, 27, 0.948), rgba(14,165,233,.25));
+}
+
+/* Respeta usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce){
+  .social a{ transition:none; }
+}
+
+/* Asegurar que los SVG hereden color/tamaño del botón */
+.social svg{
+  width:22px;
+  height:22px;
+  display:block;
+}
+
+
+
+/* ============================================
+   RESPONSIVE / OVERRIDES
+   (Dejar al FINAL del archivo)
+   ============================================ */
+
+/* 1) Guard-rail: nunca desbordar horizontalmente */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2) Medios fluidos: nada rompe el ancho */
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3) Contenedores consistentes en TODAS las secciones */
+.container {
+  width: min(100% - clamp(16px, 4vw, 48px), 1280px);
+  margin-inline: auto;
+}
+
+/* El header usa el mismo ancho de container */
+header .container_logo {
+  width: min(100% - clamp(16px, 4vw, 48px), 1280px);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+/* 4) Logo y menú nunca desbordan */
+.logo_img {
+  max-height: clamp(64px, 7vw, 100px);
+  width: auto;
+  height: auto;
+}
+
+.links {
+  flex-wrap: wrap;
+  gap: clamp(12px, 2.4vw, 18px);
+}
+
+.links a {
+  white-space: nowrap;
+}
+
+/* 5) Hero: respiración vertical y grilla fluida */
+.main {
+  padding-block: clamp(24px, 6vw, 48px);
+}
+
+/* Grilla del hero */
+.main .main-grid {
+  display: grid;
+  gap: clamp(16px, 3vw, 24px);
+  align-items: center;
+}
+
+/* Desktop: 2 columnas */
+@media (min-width: 960px) {
+  .main .main-grid {
+    grid-template-columns: 1.1fr .9fr;
+  }
+}
+
+/* Mobile / Tablet: 1 columna */
+@media (max-width: 959.98px) {
+  .main .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Título del hero: mismo estilo, sin romper mobile */
+.titulo_principal {
+  font-size: clamp(1.8rem, 4.2vw, 3.1rem);
+  line-height: 1.15;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Botones del hero: no se pisan en chico */
+.main .cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 6) Tarjeta demo (mock simulador) siempre entra */
+.main .demo-card {
+  max-width: 100%;
+}
+
+/* 7) Grillas de features / steps / pricing sin overflow */
+.features-grid,
+.steps-grid,
+.pricing-grid {
+  display: grid;
+  gap: clamp(14px, 2.6vw, 24px);
+}
+
+/* Desktop */
+@media (min-width: 960px) {
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+  .steps-grid    { grid-template-columns: repeat(3, 1fr); }
+  .pricing-grid  { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile / Tablet */
+@media (max-width: 959.98px) {
+  .features-grid,
+  .steps-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 8) FAQ: ítems ocupan ancho completo y no desbordan */
+#faq .features,
+#faq .card {
+  width: 100%;
+}
+
+/* 9) Footer en 3 cards: stack en mobile, limpio en desktop */
+.footer .foot {
+  width: min(100% - clamp(16px, 4vw, 48px), 1280px);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+.foot-grid {
+  display: grid;
+  gap: clamp(12px, 2.4vw, 16px);
+}
+
+/* Desktop */
+@media (min-width: 960px) {
+  .foot-grid {
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+}
+
+/* Mobile / Tablet */
+@media (max-width: 959.98px) {
+  .foot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Iframe del mapa siempre al 100% */
+.map-box {
+  width: 100%;
+}
+
+/* 10) Bonus para pantallas muy grandes:
+      un ancho un poquito mayor para que no quede “angosto” */
+@media (min-width: 1440px) {
+  .container,
+  header .container_logo,
+  .footer .foot {
+    width: min(100% - clamp(48px, 6vw, 96px), 1400px);
+  }
+}
