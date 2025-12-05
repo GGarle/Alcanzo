@@ -1,40 +1,518 @@
-/* Encabezado local del simulador */
-.sim-hero{padding:28px 0;background:var(--bg2);border-bottom:1px solid var(--stroke)}
-.sim-hero h1{font-weight:900;margin:6px 0 0}
-.sim-hero .accent{color:var(--ok)}
+/* ================== ALCANZO — SIMULADOR ==================
+   Estilos específicos del simulador.
+=========================================================== */
 
-/* Grid principal */
-.sim-grid{display:grid;gap:18px;margin:22px 0}
-@media(min-width:960px){ .sim-grid{grid-template-columns:1.1fr 1.1fr .9fr} }
-
-/* Bloques (cards) */
-.sim-card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-.sim-card h2{margin:0 0 8px;font-size:1.15rem}
-
-/* Inputs */
-.form-row{display:grid;gap:10px;margin-bottom:10px}
-@media(min-width:720px){ .form-row.cols-2{grid-template-columns:1fr 1fr}
-                         .form-row.cols-3{grid-template-columns:repeat(3,1fr)} }
-label{display:block;font-size:.95rem;color:var(--muted);margin:2px 0}
-input[type="number"],input[type="text"],select{
-  width:100%;padding:10px 12px;border-radius:10px;border:1px solid #cbd5e1;
-  background:#fff;color:var(--ink);font-weight:600
+/* Reset básico solo para este archivo */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-input:focus,select:focus{outline:3px solid #dbeafe;border-color:#93c5fd}
 
-/* Resultados */
-.kpi{display:flex;align-items:baseline;gap:8px;margin:12px 0}
-.kpi .n{font-weight:900;font-size:1.6rem}
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid #cbd5e1;font:600 .8rem/1 ui-monospace,Menlo,monospace;color:#475569}
-.traffic{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
-.traffic span{display:block;height:12px;border-radius:999px}
-.traffic .g{background:#22c55e}.traffic .y{background:#fbbf24}.traffic .r{background:#ef4444}
+body {
+  font-family: Rajdhani, Inter, Roboto, system-ui, "Segoe UI", Arial;
+  color: #0f172a;
+  margin: 0;
+  background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 55%, #f1f5f9 100%);
+}
 
-/* CTA */
-.sim-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ok);color:#fff;border:0;
-  padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:var(--shadow)}
+/* Página del simulador: aplica solo cuando el body tenga esta clase */
+body.page-simulador {
+  background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 55%, #f1f5f9 100%);
+}
 
-/* Responsive fino */
-@media(max-width:960px){
-  .sim-grid{grid-template-columns:1fr}
+.page-simulador .page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+
+/* Hacemos que el header del simulador se comporte igual que en el index:
+   sticky arriba, cubriendo todo el ancho. */
+body.page-simulador > header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #ffffff;
+}
+
+/* No tocamos el layout interno del header: eso viene de index.css */
+
+/* ================= MAIN LAYOUT ================= */
+
+.sim-main {
+  background: radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 55%, #f1f5f9 100%);
+  padding: 40px 16px 60px;  /* padding normal, sin “truco” raro arriba */
+}
+
+.sim-main .container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+
+.sim-main-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Layout de dos columnas desktop */
+.sim-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2.8fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* En pantallas chicas: una sola columna */
+@media (max-width: 960px) {
+  .sim-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ================= COLUMNA IZQUIERDA ================= */
+
+.sim-column-card {
+  background: #f9fafb;
+  border-radius: 26px;
+  padding: 26px 26px 30px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.sim-column-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-family: Rajdhani, Inter, Roboto, system-ui, "Segoe UI", Arial;
+  font-weight: 900;
+  font-size: clamp(2rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.03em;
+}
+
+.sim-title-icon {
+  font-size: 1.8rem;
+}
+
+.sim-column-subtitle {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+/* ===== Bloques ===== */
+
+.sim-block {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.18);
+  margin-bottom: 14px;
+}
+
+/* Header de cada bloque */
+.sim-block-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 800;
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+  user-select: none;
+  cursor: pointer;
+}
+
+.sim-block-emoji {
+  font-size: 1.4rem;
+}
+
+/* Colores por tipo de bloque */
+.sim-block-header.ingresos {
+  background: #e5f8ef;
+  border-bottom-color: #22c55e;
+  border-radius: 16px 16px 0 0;
+  margin: -18px -18px 12px;
+  padding: 12px 18px 10px;
+}
+
+.sim-block-header.gastos {
+  background: #fef2f2;
+  border-bottom-color: #ef4444;
+  border-radius: 16px 16px 0 0;
+  margin: -18px -18px 12px;
+  padding: 12px 18px 10px;
+}
+
+.sim-block-header.ahorro {
+  background: #dbeafe;
+  border-bottom-color: #2563eb;
+  border-radius: 16px 16px 0 0;
+  margin: -18px -18px 12px;
+  padding: 12px 18px 10px;
+}
+
+.sim-block-header.compra {
+  background: #fef3c7;
+  border-bottom-color: #f59e0b;
+  border-radius: 16px 16px 0 0;
+  margin: -18px -18px 12px;
+  padding: 12px 18px 10px;
+}
+
+/* Indicador flechita de colapsable */
+.sim-block-header::after {
+  content: "▾";
+  margin-left: auto;
+  font-size: 0.9rem;
+  transition: transform 0.15s ease;
+  opacity: 0.7;
+}
+
+/* Cuerpo y footer del bloque */
+.sim-block-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Footer (totales) */
+.sim-block-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.sim-block-footer.ingresos {
+  background-color: #ecfdf5;
+  border-radius: 0 0 16px 16px;
+  margin: 14px -18px -16px;
+  padding: 10px 18px 12px;
+}
+
+.sim-block-footer.gastos {
+  background-color: #fef2f2;
+  border-radius: 0 0 16px 16px;
+  margin: 14px -18px -16px;
+  padding: 10px 18px 12px;
+}
+
+.sim-block-footer.ahorro {
+  background-color: #eff6ff;
+  border-radius: 0 0 16px 16px;
+  margin: 14px -18px -16px;
+  padding: 10px 18px 12px;
+}
+
+/* Valor del total */
+.sim-block-footer-amount {
+  font-family: "Rajdhani", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* Campos de formulario */
+
+.sim-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sim-field-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sim-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 2px solid #cbd5f5;
+  padding: 9px 14px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.02rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+/* Números: eliminar flechitas */
+.sim-input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;      /* estándar */
+}
+
+.sim-input[type="number"]::-webkit-inner-spin-button,
+.sim-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;   /* Chrome / Edge */
+  margin: 0;
+}
+
+.sim-input::placeholder {
+  color: #9ca3af;
+}
+
+.sim-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+  background-color: #f9fafb;
+}
+
+.sim-field-hint {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* ===== Bloques colapsables ===== */
+
+.sim-block-collapsed .sim-block-body,
+.sim-block-collapsed .sim-block-footer {
+  display: none;
+}
+
+.sim-block-collapsed .sim-block-header::after {
+  transform: rotate(-90deg);
+}
+
+/* ================= COLUMNA DERECHA (RESULTADO) ================= */
+
+.sim-result-wrapper {
+  width: 100%;
+}
+
+.sim-result-card {
+  background: #f9fafb;
+  border-radius: 26px;
+  padding: 20px 20px 22px;
+  border: 1px solid rgba(248, 171, 84, 0.35);
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Hero / semáforo */
+
+.sim-result-hero {
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #e5e7eb, #f3f4f6); /* neutro */
+  color: #111827;
+}
+
+/* Colores por nivel */
+.sim-result-card.nivel-ok .sim-result-hero {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ecfdf5;
+}
+
+.sim-result-card.nivel-medio .sim-result-hero {
+  background: linear-gradient(135deg, #fbbf24, #fde68a);
+  color: #78350f;
+}
+
+.sim-result-card.nivel-mal .sim-result-hero {
+  background: linear-gradient(135deg, #ef4444, #fecaca);
+  color: #fef2f2;
+}
+
+.sim-result-card.nivel-neutro .sim-result-hero {
+  background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+  color: #111827;
+}
+
+.sim-result-hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.sim-result-card.nivel-neutro .sim-result-hero-icon {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+.sim-result-hero-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sim-result-hero-title {
+  margin: 0;
+  font-family: "Rajdhani", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.sim-result-hero-subtitle {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+/* Detalle / métricas */
+
+.sim-result-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sim-result-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sim-metric-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sim-metric-label {
+  font-size: 0.92rem;
+  color: #6b7280;
+}
+
+.sim-metric-value {
+  font-family: "Rajdhani", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.18rem;
+  color: #111827;
+}
+
+/* Consejo */
+
+.sim-result-advice {
+  margin-top: 2px;
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sim-result-advice-icon {
+  font-size: 1.3rem;
+  margin-top: 2px;
+}
+
+.sim-result-advice-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sim-result-advice-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.sim-result-advice-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #78350f;
+}
+
+/* Mini resumen numérico */
+
+.sim-result-mini-summary {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.sim-result-mini-summary span strong {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 960px) {
+  .sim-column-card,
+  .sim-result-card {
+    border-radius: 20px;
+    padding: 20px 16px 22px;
+  }
+
+  .sim-layout {
+    gap: 20px;
+  }
+
+  .sim-result-card {
+    margin-top: 4px;
+  }
+
+  .sim-result-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .sim-column-title {
+    font-size: clamp(1.6rem, 7vw, 1.9rem);
+  }
+
+  .sim-column-card {
+    padding: 20px 14px 22px;
+  }
+
+  .sim-result-hero-title {
+    font-size: 1.3rem;
+  }
+
+  .sim-result-hero-subtitle {
+    font-size: 0.96rem;
+  }
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
 }

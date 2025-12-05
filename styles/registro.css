@@ -1,0 +1,43 @@
+/* Estilos compartidos para auth (registro y login) */
+.auth-card {
+  max-width: 400px;
+  margin: 4rem auto;
+  background: var(--color-white);
+  padding: .5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.auth-card h1 {
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.auth-card p {
+  color: #111022;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 10.75rem;
+  font-size: 1rem;
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.auth-footer a {
+  color: var(--color-primary-dark);
+  font-weight: 900;
+  text-decoration: none;
+}

@@ -1,149 +1,398 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Simulador — Alcanzo</title>
-  <meta name="description" content="Cargá tus números y conocé tu sobrante, cuota segura y un semáforo simple." />
-  <!-- Tipografías (mismas del index) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <!-- CSS del simulador (independiente del index) -->
-  <link rel="stylesheet" href="styles/simulador.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alcanzo — Simulador</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS general (header, footer, botones, etc.) -->
+  <link rel="stylesheet" href="styles/index.css" />
+  <!-- CSS específico del simulador -->
+  <link rel="stylesheet" href="styles/simulador.css" />
 </head>
-<body>
-  <!-- Header (mismo markup para que no “parezca otra web”) -->
-  <header class="alc-header">
-    <div class="alc-container alc-nav">
-      <a class="alc-brand" href="index.html" aria-label="Volver al inicio">
-        <img src="logo/20251012_logo_ok.png" alt="Logo Alcanzo" class="alc-logo">
-        <strong>Alcanzo</strong>
-      </a>
-      <nav class="alc-links" aria-label="principal">
-        <a href="index.html#funciona">Cómo funciona</a>
-        <a href="index.html#precios">Precios</a>
-        <a href="index.html#faq">FAQ</a>
-        <a class="alc-btn alt" href="login.html">Entrar</a>
-        <a class="alc-btn" href="signup.html">Crear cuenta</a>
+
+<body class="page-simulador">
+  <!-- ================= HEADER (IGUAL AL INDEX) ================= -->
+  <header>
+    <div class="container container_logo">
+      <div class="logo-area">
+        <a href="index.html" class="logo-link">
+          <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Alcanzo" />
+        </a>
+      </div>
+      <nav class="links">
+        <a href="simulador.html" class="nav-link nav-link-active">Simulador</a>
+        <a href="#funciona">Cómo funciona</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">Preguntas</a>
+        <div class="auth-buttons" id="auth-buttons">
+          <a href="login.html" class="btn btn-ghost">Entrar</a>
+          <a href="registro.html" class="btn">Crear cuenta</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero del simulador -->
-  <section class="sim-hero">
-    <div class="alc-container sim-hero__grid">
-      <div>
-        <p class="alc-pill">Simulador</p>
-        <h1 class="sim-title">
-          Tus números, tu cuota segura<br>
-          <span class="sim-title__accent">en segundos</span>
-        </h1>
-        <p class="sim-sub">
-          Completá tus datos básicos y el objetivo de compra. Más adelante sumamos el cálculo en vivo:
-          <strong>sobrante</strong>, <strong>cuota segura</strong> y <strong>semáforo</strong>.
-        </p>
+  <!-- ================= MAIN ================= -->
+  <main class="sim-main">
+    <div class="container">
+      <div class="sim-main-inner">
+        <section class="sim-layout">
+          <!-- ===== Columna izquierda: formulario ===== -->
+          <article class="sim-column-card">
+            <header>
+              <h1 class="sim-column-title">
+                <span class="sim-title-icon">📊</span>
+                <span>Simulador Financiero</span>
+              </h1>
+              <p class="sim-column-subtitle">
+                Completá tus datos para saber si podés hacer esa compra y cómo queda tu mes.
+              </p>
+            </header>
+
+            <!-- Bloque 1: Ingresos -->
+            <section class="sim-block" id="block-ingresos">
+              <div class="sim-block-header ingresos">
+                <span class="sim-block-emoji">💰</span>
+                <span>Tus Ingresos</span>
+              </div>
+              <div class="sim-block-body">
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="ingreso_sueldo">
+                    Salario Mensual
+                  </label>
+                  <input
+                    id="ingreso_sueldo"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 250000"
+                  />
+                  <p class="sim-field-hint">
+                    Ingresos fijos, sueldo o jubilación, en mano.
+                  </p>
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="ingreso_otros">
+                    Otros Ingresos (changas, extras, etc.)
+                  </label>
+                  <input
+                    id="ingreso_otros"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 30000"
+                  />
+                  <p class="sim-field-hint">
+                    Todo lo que entra por fuera del salario principal.
+                  </p>
+                </div>
+              </div>
+              <footer class="sim-block-footer ingresos">
+                <span>Total que te entra:</span>
+                <span class="sim-block-footer-amount" id="total_ingresos_label">$0</span>
+              </footer>
+            </section>
+
+            <!-- Bloque 2: Gastos fijos -->
+            <section class="sim-block" id="block-gastos">
+              <div class="sim-block-header gastos">
+                <span class="sim-block-emoji">📥</span>
+                <span>Tus Gastos Fijos</span>
+              </div>
+              <div class="sim-block-body">
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_alquiler">
+                    Alquiler o Cuota de Vivienda
+                  </label>
+                  <input
+                    id="gasto_alquiler"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 80000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_servicios">
+                    Servicios (luz, gas, agua, internet, celular)
+                  </label>
+                  <input
+                    id="gasto_servicios"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 25000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_prestamos">
+                    Préstamos personales / créditos
+                  </label>
+                  <input
+                    id="gasto_prestamos"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 15000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_tarjetas">
+                    Tarjetas de crédito (mínimos / cuotas)
+                  </label>
+                  <input
+                    id="gasto_tarjetas"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 20000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_impuestos">
+                    Impuestos / Monotributo / Aportes
+                  </label>
+                  <input
+                    id="gasto_impuestos"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 10000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="gasto_otros">
+                    Otros gastos fijos
+                  </label>
+                  <input
+                    id="gasto_otros"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 15000"
+                  />
+                </div>
+              </div>
+              <footer class="sim-block-footer gastos">
+                <span>Tus gastos fijos:</span>
+                <span class="sim-block-footer-amount" id="total_gastos_label">$0</span>
+              </footer>
+            </section>
+
+            <!-- Bloque 3: Ahorro -->
+            <section class="sim-block" id="block-ahorro">
+              <div class="sim-block-header ahorro">
+                <span class="sim-block-emoji">💎</span>
+                <span>Tu Ahorro</span>
+              </div>
+              <div class="sim-block-body">
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="ahorro_pct">
+                    Porcentaje de ahorro deseado (%)
+                  </label>
+                  <input
+                    id="ahorro_pct"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    max="80"
+                    step="1"
+                    placeholder="Ej: 10"
+                  />
+                  <p class="sim-field-hint">
+                    Si completás este campo, tomamos ese % de tus ingresos como ahorro automático.
+                  </p>
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="ahorro_mensual">
+                    Ahorro mensual (monto)
+                  </label>
+                  <input
+                    id="ahorro_mensual"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 20000"
+                  />
+                  <p class="sim-field-hint">
+                    Si dejás el % vacío, usamos este monto. Si ponés un %, calculamos el monto automáticamente.
+                  </p>
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="prefMargenSeguridad">
+                    Margen de seguridad deseado (% del ingreso)
+                  </label>
+                  <input
+                    id="prefMargenSeguridad"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    max="50"
+                    step="1"
+                    placeholder="Ej: 10"
+                  />
+                  <p class="sim-field-hint">
+                    Es el colchón que querés dejar libre cada mes para imprevistos.
+                  </p>
+                </div>
+              </div>
+              <footer class="sim-block-footer ahorro">
+                <span>Meta de ahorro mensual:</span>
+                <span class="sim-block-footer-amount" id="total_ahorro_label">$0</span>
+              </footer>
+            </section>
+
+            <!-- Bloque 4: Compra -->
+            <section class="sim-block" id="block-compra">
+              <div class="sim-block-header compra">
+                <span class="sim-block-emoji">🛒</span>
+                <span>La Compra que querés hacer</span>
+              </div>
+              <div class="sim-block-body">
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="compra_monto">
+                    Monto de la compra
+                  </label>
+                  <input
+                    id="compra_monto"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="1000"
+                    placeholder="Ej: 150000"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="compra_cuotas">
+                    Cantidad de cuotas
+                  </label>
+                  <input
+                    id="compra_cuotas"
+                    class="sim-input"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="Ej: 6"
+                  />
+                </div>
+
+                <div class="sim-field-group">
+                  <label class="sim-field-label" for="compra_tasa">
+                    Tasa de interés estimada (% mensual)
+                  </label>
+                  <input
+                    id="compra_tasa"
+                    class="sim-input"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    placeholder="Ej: 5"
+                  />
+                  <p class="sim-field-hint">
+                    Podés usar 0% si es una promo sin interés.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          <!-- ===== Columna derecha: resultado ===== -->
+          <aside class="sim-result-wrapper">
+            <section class="sim-result-card nivel-neutro" id="seccionResultado">
+              <!-- Hero / semáforo -->
+              <div class="sim-result-hero">
+                <div class="sim-result-hero-icon" id="iconoResultado">📈</div>
+                <div class="sim-result-hero-texts">
+                  <h2 class="sim-result-hero-title" id="resultadoTitulo">
+                    Completá tus datos
+                  </h2>
+                  <p class="sim-result-hero-subtitle" id="resultadoSubtitulo">
+                    Poné tus ingresos, gastos, ahorro y lo que querés comprar. Te mostramos acá si te alcanza y qué tan
+                    ajustado queda tu mes.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Detalle -->
+              <div class="sim-result-detail">
+                <!-- Métricas principales -->
+                <div class="sim-result-metrics">
+                  <div class="sim-metric-card">
+                    <span class="sim-metric-label">Cuota mensual</span>
+                    <span class="sim-metric-value" id="statCuota">$0</span>
+                  </div>
+                  <div class="sim-metric-card">
+                    <span class="sim-metric-label">Te sobra por mes</span>
+                    <span class="sim-metric-value" id="statSobra">$0</span>
+                  </div>
+                  <div class="sim-metric-card">
+                    <span class="sim-metric-label">Compromiso del disponible</span>
+                    <span class="sim-metric-value" id="statCompromiso">0%</span>
+                  </div>
+                </div>
+
+                <!-- Consejo -->
+                <div class="sim-result-advice">
+                  <div class="sim-result-advice-icon">💡</div>
+                  <div class="sim-result-advice-text">
+                    <div class="sim-result-advice-title">Consejo</div>
+                    <p id="resultadoConsejo">
+                      Arrancá por tus ingresos mensuales y después sumá tus gastos fijos. Con eso ya podemos darte una
+                      idea más clara.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Mini resumen -->
+                <div class="sim-result-mini-summary">
+                  <span>Ingresos: <strong id="statIngresosMini">$0</strong></span>
+                  <span>Gastos fijos: <strong id="statGastosMini">$0</strong></span>
+                  <span>Ahorro mensual: <strong id="statAhorroMini">$0</strong></span>
+                  <span>Disponible: <strong id="statDisponibleMini">$0</strong></span>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </section>
       </div>
-      <aside class="sim-preview card">
-        <div class="sim-preview__tag">vista</div>
-        <h3>Cómo se ve</h3>
-        <p class="muted">Sobrante, cuota y un semáforo simple.</p>
-        <div class="sim-preview__mock"></div>
-      </aside>
     </div>
-  </section>
-
-  <!-- Grid del simulador -->
-  <main class="alc-container sim-grid">
-    <!-- Columna 1: Ingresos y gastos -->
-    <section class="card">
-      <h2 class="card__title">Ingresos y gastos</h2>
-      <div class="form-grid">
-        <label class="field">
-          <span class="label">Ingresos mensuales (ARS)</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 800000">
-        </label>
-        <label class="field">
-          <span class="label">Gastos fijos del mes</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 520000">
-        </label>
-        <label class="field">
-          <span class="label">Cuotas vigentes (suma mensual)</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 65000">
-        </label>
-      </div>
-      <p class="muted">Tip: redondeá, no hace falta el número exacto.</p>
-    </section>
-
-    <!-- Columna 2: Simular compra -->
-    <section class="card">
-      <h2 class="card__title">Simular compra</h2>
-      <div class="form-grid">
-        <label class="field">
-          <span class="label">Monto a financiar</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 300000">
-        </label>
-        <label class="field">
-          <span class="label">Cantidad de cuotas</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 12">
-        </label>
-        <label class="field">
-          <span class="label">TNA (opcional)</span>
-          <input type="number" inputmode="numeric" placeholder="Ej: 0 o 65">
-        </label>
-        <label class="field">
-          <span class="label">“Cuota segura”</span>
-          <select>
-            <option value="25">25%</option>
-            <option value="30">30%</option>
-            <option value="35" selected>35%</option>
-            <option value="40">40%</option>
-          </select>
-        </label>
-      </div>
-      <button class="alc-btn sim-btn" type="button" disabled>Calcular (próximo paso)</button>
-      <p class="muted">Más adelante el monto y las cuotas van a actualizar el semáforo en vivo.</p>
-    </section>
-
-    <!-- Columna 3: Resultados -->
-    <aside class="card">
-      <h2 class="card__title">Resultados</h2>
-      <div class="kpis">
-        <div class="kpi">
-          <span class="badge">Lo que te queda este mes</span>
-          <strong class="kpi__value">$ —</strong>
-        </div>
-        <div class="kpi">
-          <span class="badge">Cuota estimada de la compra</span>
-          <strong class="kpi__value">$ —</strong>
-        </div>
-        <div class="kpi">
-          <span class="badge">DTI (deuda/ingreso)</span>
-          <strong class="kpi__value">— %</strong>
-          <span class="semaforo sem--na">—</span>
-        </div>
-      </div>
-      <hr class="sep">
-      <h3 class="card__subtitle">Recomendación</h3>
-      <p class="muted">—</p>
-
-      <div class="semaforo-bar">
-        <span class="s ok" title="Verde"></span>
-        <span class="s warn" title="Amarillo"></span>
-        <span class="s bad" title="Rojo"></span>
-      </div>
-    </aside>
   </main>
 
-  <!-- Footer corto -->
-  <footer class="alc-footer">
-    <div class="alc-container foot">
-      <div class="foot__brand">
-        <img src="logo/20251012_logo_ok.png" alt="Logo Alcanzo" class="alc-logo--sm">
-        <strong>Alcanzo</strong>
-      </div>
-      <small>© 2025 Alcanzo — “¿Te alcanza? Preguntá antes de gastar.”</small>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Alcanzo. Todos los derechos reservados.</p>
     </div>
   </footer>
+
+  <!-- Script -->
+  <script src="js/simulador.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Alcanzo</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Tomorrow:wght@400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS global + CSS de auth -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo-auth">
+            <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Logo entidad">
+        </div>
+        <div class="subtitle">Tu aliado financiero</div>
+        
+        <h1>Ingresá a tu cuenta</h1>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono</label>
+                <input type="tel" id="telefono" placeholder="+54 9 11 1234-5678" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-full">Iniciar Sesión</button>
+        </form>
+
+        <div class="link-text">
+            ¿No tenés cuenta? <a href="registro.html">Creá una acá</a>
+        </div>
+
+        <div class="link-text" style="margin-top: 1rem;">
+            <a href="index.html">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <!-- JS externo -->
+    <script src="js/login.js"></script>
+</body>
+</html>

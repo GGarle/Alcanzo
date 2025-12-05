@@ -4,36 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alcanzo — ¿Te alcanza? Preguntá antes de gastar</title>
-  <meta name="description" content="Alcanzo: simulador simple para saber si te alcanza antes de gastar. Registrate gratis, calculá tu sobrante y tu cuota segura, y si pasás a Pro seguí tu cashflow."/>
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Tomorrow:wght@400;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Externo -->
   <link rel="stylesheet" href="styles/index.css"/>
+
+  <!-- Auth helper -->
+  <script src="js/auth.js" defer></script>
 </head>
 
 <body>
-  <!-- ============== HEADER ============== -->
+
+  <!-- HEADER -->
   <header>
-    <div class="container_logo">
-      <div>
-        <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Logo entidad"/>
+    <div class="container container_logo">
+      <div class="logo-area">
+        <a href="index.html" class="logo-link">
+          <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Logo entidad"/>
+        </a>
       </div>
-      <nav class="links" aria-label="principal">
-        <a href="#simulador">Simulador</a>
+      <nav class="links">
+        <a href="simulador.html">Simulador</a>
         <a href="#funciona">Cómo funciona</a>
         <a href="#precios">Precios</a>
-        <a href="#faq">Preguntas frecuentes</a>
-        <a href="login.html" class="btn">Entrar</a>
-        <a href="signup.html" class="btn">Crear cuenta</a>
+        <a href="#faq">Preguntas</a>
+        <div class="auth-buttons" id="auth-buttons">
+          <a href="login.html" class="btn btn-ghost">Entrar</a>
+          <a href="registro.html" class="btn">Crear cuenta</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <!-- ============== MAIN ============== -->
   <main>
     <!-- HERO -->
     <section class="main">
       <div class="container main-grid">
-        <!-- Columna izquierda -->
         <div class="col-left">
-          <p>Tus gastos más simples</p>
+          <p class="hero-badge">
+            Tus gastos más simples
+          </p>
 
           <h1 class="titulo_principal">
             ¿Te alcanza? <br>
@@ -41,90 +55,139 @@
             <span class="h1-acento">Te respondemos al toque</span>
           </h1>
 
-          <p>Decidí con datos: cuánto te queda este mes y cuánto podés pagar por mes sin apretarte. Probalo en 30 segundos. Si querés, creás tu cuenta y guardás tu avance.</p>
+          <p class="hero-subtitle">
+            Decidí con datos: cuánto te queda este mes y cuánto podés pagar por mes sin apretarte.
+          </p>
 
           <div class="cta">
-            <a href="simulador.html" class="btn">Probar simulador</a>
-            <a href="signup.html" class="btn alt">Crear cuenta gratis</a>
+            <a href="simulador.html" class="btn btn-lg">Probar simulador</a>
+            <a href="signup.html" class="btn btn-lg alt">Crear cuenta gratis</a>
           </div>
-
-          <p>Tip: Podés empezar sin registrarte y guardar después.</p>
         </div>
 
-        <!-- Columna derecha (tarjeta ilustrativa) -->
         <aside class="col-right">
-          <a class="demo-card" href="simulador.html" aria-label="Ir al simulador">
-            <strong class="demo-badge">simulador</strong>
-            <h3>Simulador simple</h3>
-            <p class="demo-sub">Cargás ingresos y gastos, estimamos tu cuota “cómoda” y te mostramos un semáforo.</p>
+          <a class="demo-card hero-demo-card" href="simulador.html">
+            <!-- Fondo decorativo -->
+            <div class="demo-card-deco"></div>
 
-            <div class="demo-box" aria-hidden="true">
-              <div class="demo-line lg"></div>
-              <div class="demo-line md"></div>
-              <div class="demo-panel"></div>
-              <div class="demo-traffic">
-                <span class="ok"></span>
-                <span class="warn"></span>
-                <span class="bad"></span>
+            <div class="demo-card-inner">
+              <div class="demo-card-header">
+                <svg class="demo-header-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <strong class="demo-badge">DECISIONES RÁPIDAS</strong>
               </div>
-              <div class="demo-panel light"></div>
+
+              <h3 class="demo-title">
+                Simulador Inteligente
+              </h3>
+              <p class="demo-subtitle">
+                Cargás tus números, te mostramos si podés comprarlo y qué tan seguro es.
+              </p>
+
+              <div class="demo-box">
+                <!-- Título del semáforo -->
+                <div class="demo-box-header">
+                  <p>Te lo mostramos facil </p>
+                </div>
+
+                <!-- Semáforo -->
+                <div class="demo-semaforo-grid">
+                  <!-- VERDE - OK -->
+                  <div class="demo-semaforo-item">
+                    <div class="semaforo-circle semaforo-verde semaforo-circle-activo">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <p class="semaforo-label semaforo-label-verde">Dale adelante</p>
+                  </div>
+
+                  <!-- AMARILLO - CUIDADO -->
+                  <div class="demo-semaforo-item">
+                    <div class="semaforo-circle semaforo-amarillo">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                      </svg>
+                    </div>
+                    <p class="semaforo-label semaforo-label-amarillo">Andá con cuidado</p>
+                  </div>
+
+                  <!-- ROJO - NO -->
+                  <div class="demo-semaforo-item">
+                    <div class="semaforo-circle semaforo-rojo">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                      </svg>
+                    </div>
+                    <p class="semaforo-label semaforo-label-rojo">Mejor no</p>
+                  </div>
+                </div>
+
+                <!-- Mensaje bottom -->
+                <div class="demo-bottom-box">
+                  <p class="demo-bottom-text">
+                    Probá en 30 segundos →
+                  </p>
+                </div>
+              </div>
             </div>
           </a>
         </aside>
       </div>
     </section>
 
-    <!-- SIMULADOR / FEATURES -->
-    <section id="simulador" class="simulador container">
+    <!-- FEATURES -->
+    <section id="simulador" class="container section-block">
       <h2 class="titulo_principal_2">Lo que hace Alcanzo</h2>
       <div class="features-grid">
         <article class="card">
           <h3 class="titulo_principal_3">Calculá tu sobrante</h3>
           <p>Ingresos − (gastos + cuotas) y listo. Sin vueltas.</p>
         </article>
-
         <article class="card">
           <h3 class="titulo_principal_3">Cuota segura</h3>
           <p>Te decimos hasta cuánto podés pagar sin quedarte corto.</p>
         </article>
-
         <article class="card">
           <h3 class="titulo_principal_3">Semáforo en vivo</h3>
-          <p>Verde / amarillo / rojo según tu situación. Decidís con calma.</p>
+          <p>Verde / amarillo / rojo según tu situación.</p>
         </article>
-
         <article class="card">
           <h3 class="titulo_principal_3">Metas</h3>
           <p>Objetivos de ahorro medibles.</p>
         </article>
-
         <article class="card">
           <h3 class="titulo_principal_3">Cashflow (Pro)</h3>
-          <p>Evolución de ingresos y gastos por mes, metas y proyección.</p>
+          <p>Evolución de ingresos y gastos por mes.</p>
         </article>
-
         <article class="card">
           <h3 class="titulo_principal_3">Alertas (Pro)</h3>
-          <p>Recordatorios simples: vencimientos, subas de gastos, objetivos.</p>
+          <p>Recordatorios simples: vencimientos, subas.</p>
         </article>
       </div>
     </section>
 
     <!-- CÓMO FUNCIONA -->
-    <section id="funciona" class="funciona container">
+    <section id="funciona" class="container section-block">
       <h2 class="titulo_principal_2">Cómo funciona</h2>
       <div class="steps-grid">
         <article class="card step" data-step="1">
+          <div class="step-number">1</div>
           <h3 class="titulo_principal_3">Contanos tus números</h3>
           <p>Ingreso y gastos básicos. 30 segundos.</p>
         </article>
-
         <article class="card step" data-step="2">
+          <div class="step-number">2</div>
           <h3 class="titulo_principal_3">Simulá tu compra</h3>
           <p>Monto y cuotas. Vemos si te alcanza sin riesgo.</p>
         </article>
-
         <article class="card step" data-step="3">
+          <div class="step-number">3</div>
           <h3 class="titulo_principal_3">Seguimiento (Pro)</h3>
           <p>Registrate, guardá perfiles y seguí tu cashflow</p>
         </article>
@@ -132,148 +195,153 @@
     </section>
 
     <!-- PRECIOS -->
-    <section id="precios" class="precios container">
+    <section id="precios" class="container section-block">
       <h2 class="titulo_principal_2">Precios simples</h2>
       <div class="pricing-grid">
-        <article class="card price">
-          <h3 class="titulo_principal_3">Gratis</h3>
-          <p>Para decidir antes de comprar</p>
-          <p class="num">$ 0</p>
-          <ul>
-            <li>Simulador completo</li>
-            <li>1 perfil</li>
-            <li>Guardado local</li>
+        <article class="card price price-card">
+          <h3 class="titulo_principal_3 price-title">Gratis</h3>
+          <p class="price-subtitle">Para decidir antes de comprar</p>
+          <div class="price-amount-wrap">
+            <span class="num price-amount">$0</span>
+          </div>
+          <ul class="price-list">
+            <li>
+              <span class="price-check">✓</span> Simulador completo
+            </li>
+            <li>
+              <span class="price-check">✓</span> 1 perfil
+            </li>
+            <li>
+              <span class="price-check">✓</span> Guardado local
+            </li>
           </ul>
-          <a class="btn" href="simulador.html">Usar ahora</a>
+          <a class="btn btn-outline btn-full" href="simulador.html">Usar ahora</a>
         </article>
-
-        <article class="card price">
-          <h3 class="titulo_principal_3">Pro</h3>
-          <p>Para seguir tu mes a mes</p>
-          <p class="num">$ 100.000 /mes</p>
-          <ul>
-            <li>Perfiles ilimitados</li>
-            <li>Cashflow, metas y alertas</li>
+        
+        <article class="card price price-card price-card-pro">
+          <div class="pro-badge">⭐ Recomendado</div>
+          <h3 class="titulo_principal_3 price-title">Pro</h3>
+          <p class="price-subtitle price-subtitle-pro">Para seguir tu mes a mes</p>
+          <div class="price-amount-wrap">
+            <span class="num price-amount price-amount-pro">$100k <span class="period">/mes</span></span>
+          </div>
+          <ul class="price-list price-list-pro">
+            <li>
+              <span class="price-check price-check-pro">✓</span> Perfiles ilimitados
+            </li>
+            <li>
+              <span class="price-check price-check-pro">✓</span> Cashflow, metas y alertas
+            </li>
           </ul>
-          <a class="btn" href="signup.html">Probar gratis</a>
+          <a class="btn btn-dark btn-full" href="signup.html">Probar gratis</a>
         </article>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="container mt-28">
-      <h2 class="title title--sm">Preguntas frecuentes</h2>
-    
+    <section id="faq" class="container section-block">
+      <h2 class="titulo_principal_2">Preguntas frecuentes</h2>
       <div class="faq">
         <details class="faq-item" open>
           <summary>¿Necesito registrarme?</summary>
-          <p>No para el simulador. Podés crear una cuenta cuando quieras para guardar tu avance.</p>
+          <div class="faq-content">
+             <p>No para el simulador. Podés crear una cuenta cuando quieras para guardar tu avance.</p>
+          </div>
         </details>
-    
         <details class="faq-item">
-          <summary>¿Qué significa “lo que te queda por mes”?</summary>
-          <p>Es la plata que te queda después de tus gastos y cuotas actuales. La cuenta es:
-            <strong>ingresos − (gastos fijos + cuotas vigentes)</strong>. No hace falta conectar el banco:
-            vos cargás los números.</p>
+          <summary>¿Qué significa "lo que te queda por mes"?</summary>
+          <div class="faq-content">
+            <p>Es la plata que te queda después de tus gastos y cuotas actuales. La cuenta es:
+              <strong>ingresos − (gastos fijos + cuotas vigentes)</strong>. No hace falta conectar el banco:
+              vos cargás los números.</p>
+          </div>
         </details>
-    
         <details class="faq-item">
-          <summary>¿Qué es la “cuota segura” / “cuota cómoda”?</summary>
-          <p>Es una referencia de cuota mensual que no te complica según tus números. La calculamos con
-            un margen de seguridad para que puedas pagarla sin apuros.</p>
+          <summary>¿Qué es la "cuota segura"?</summary>
+          <div class="faq-content">
+             <p>Es una referencia de cuota mensual que no te complica según tus números. La calculamos con
+              un margen de seguridad para que puedas pagarla sin apuros.</p>
+          </div>
         </details>
-    
         <details class="faq-item">
           <summary>¿Qué necesito para usarlo?</summary>
-          <p>Solo tus números básicos: ingreso mensual en mano y tus gastos/cuotas del mes. Podés
-            redondear.</p>
+          <div class="faq-content">
+             <p>Solo tus números básicos: ingreso mensual en mano y tus gastos/cuotas del mes.</p>
+          </div>
         </details>
-    
-        <details class="faq-item">
-          <summary>¿Cómo funciona el semáforo?</summary>
-          <ul>
-            <li class="verde"><strong>Verde</strong> = cómodo</li>
-            <li class="amarillo"><strong>Amarillo</strong> = justo</li>
-            <li class="rojo"><strong>Rojo</strong> = no recomendado</li>
-          </ul>
-        </details>
-    
         <details class="faq-item">
           <summary>¿Puedo simular una compra en cuotas con tasa?</summary>
-          <p>Sí. Ingresás el monto, la cantidad de cuotas y, si sabés, la TNA. Estimamos la cuota y te
-            mostramos el semáforo.</p>
+          <div class="faq-content">
+             <p>Sí. Ingresás el monto, la cantidad de cuotas y, si sabés, la TNA. Estimamos la cuota y te
+              mostramos el semáforo.</p>
+          </div>
         </details>
+        <details class="faq-item">
+          <summary>¿Cómo funciona el semáforo?</summary>
+          <div class="faq-content">
+            <ul>
+              <li class="verde"><strong>Verde</strong> = cómodo</li>
+              <li class="amarillo"><strong>Amarillo</strong> = justo</li>
+              <li class="rojo"><strong>Rojo</strong> = no recomendado</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Probalo ahora, es gratis</h2>
+          <p>No te lleva ni 2 minutos. Poné tus números y ya sabés si te alcanza o no.</p>
+          <a href="simulador.html" class="btn btn-white btn-lg">Usar simulador →</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- ============== FOOTER ============== -->
-<footer class="footer">
-  <div class="container foot">
-    <div class="foot-grid">
-      
-      <!-- Columna 1: Marca -->
-      <section class="foot-col card">
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container foot-grid">
+      <!-- Marca -->
+      <div class="foot-col card">
         <div class="foot-brand">
-          <img src="logo/20250925_logo.png" alt="Logo Alcanzo" class="logo-small" width="120" height="120">
+          <img class="logo_img" src="logo/20251012_logo_ok.png" alt="Logo entidad"/>
         </div>
-        <p class="foot-text">¿Te alcanza antes de gastar? Decidí con datos, sin vueltas.</p>
+        <p class="foot-text foot-text-main">
+          ¿Te alcanza antes de gastar? Decidí con datos, sin vueltas.
+        </p>
         <small class="foot-copy">© 2025 Alcanzo</small>
-      </section>
+      </div>
 
-      <!-- Columna 2: Contacto + redes -->
-      <section class="foot-col card">
-        <h3 class="foot-title">Contacto</h3>
+      <!-- Links Legales -->
+      <div class="foot-col card">
+        <h3 class="titulo_principal_3 foot-title">Legales</h3>
         <ul class="foot-links">
-          <li><a href="mailto:hola@alcanzo.app">hola@alcanzo.app</a></li>
-          <li><a href="tel:+5491100000000">+54 9 11 0000-0000</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#precios">Precios</a></li>
-          <!-- Si más adelante usás Formspree o /contacto.html, linkealo acá -->
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="mailto:hola@alcanzo.app">Contacto</a></li>
         </ul>
-
-        <div class="social" aria-label="Redes sociales">
-          <a href="#" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
-            <!-- Instagram (SVG) -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm10 2H7a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3zm-5 3a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2zM17.5 6a1 1 0 11-1 1 1 1 0 011-1z"/>
-            </svg>
+        <div class="social">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
           </a>
-          <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
-            <!-- LinkedIn (SVG) -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 107.5 6 2.5 2.5 0 004.98 3.5zM3.5 8h3v12h-3zm6 0h2.9v1.6h.04a3.18 3.18 0 012.86-1.57c3.06 0 3.62 2.01 3.62 4.63V20h-3v-5.1c0-1.22 0-2.8-1.7-2.8-1.7 0-2 1.33-2 2.7V20h-3z"/>
-            </svg>
-          </a>
-          <a href="#" aria-label="X" title="X" target="_blank" rel="noopener">
-            <!-- X/Twitter (SVG) -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M18.9 2H22l-7.1 8.1L23.5 22H16l-5-6.5L5.2 22H2l7.6-8.7L.5 2H8l4.5 6L18.9 2zm-2.5 18h2.1L7.6 4H5.4l11 16z"/>
-            </svg>
+          <a href="#" class="social-link" aria-label="Twitter / X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
           </a>
         </div>
-      </section>
+      </div>
 
-      <!-- Columna 3: Ubicación (iframe de Google Maps) -->
-      <section class="foot-col card">
-        <h3 class="foot-title">Ubicación</h3>
-        <p class="foot-text">Av. Siempre Viva 742, CABA</p>
-        <div class="map-box">
-          <iframe
-            title="Mapa — Alcanzo"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Av.+Siempre+Viva+742,+CABA&output=embed">
-          </iframe>
-        </div>
-      </section>
-
+      <!-- Mapa -->
+      <div class="foot-col card map-box">
+        <iframe 
+          src="https://www.google.com/maps?q=Buenos+Aires&output=embed" 
+          title="Mapa" loading="lazy">
+        </iframe>
+      </div>
     </div>
-  </div>
-
-  <!-- Banda final opcional -->
-  <div class="footer-endcap"></div>
-</footer>
+  </footer>
 
 </body>
 </html>
